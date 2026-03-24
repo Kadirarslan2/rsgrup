@@ -235,21 +235,21 @@
         /* ======================================================= */
         @media screen and (max-width: 768px) {
             header {
-                justify-content: space-between; 
-                height: 60px; 
+                justify-content: flex-end; /* Hamburgeri kesin olarak SAĞA yaslar */
+                height: 70px; /* ÜST PANEL İNCECİK SABİT KALDI */
                 padding: 0 5%;
                 position: relative;
             }
 
             .logo-container {
                 position: absolute; 
-                top: 0;
-                left: 5%;
+                top: 0; /* Panelin en üstüne jilet gibi hizalandı */
+                left: 5%; /* Sol köşeye hizalandı */
                 margin-bottom: 0;
             }
 
             .logo-container img {
-                height: 160px; /* <--- LOGO BOYUTUNU BURADAN DEĞİŞTİREBİLİRSİN */
+                height: 170px; /* LOGO BOYUTU TAM 170PX YAPILDI */
             }
 
             /* Hamburger Menü İkonu Göster */
@@ -263,7 +263,7 @@
                 width: 100%;
                 display: none; 
                 position: absolute;
-                top: 60px; 
+                top: 70px; /* Panel boyuna göre hemen altından açılır */
                 left: 0;
                 background-color: var(--beyaz);
                 padding: 20px 0;
@@ -311,7 +311,7 @@
 
             header { position: relative; }
             
-            /* Mobilde Sabit Teklif Butonunu Biraz Küçült */
+            /* Mobilde Sabit Teklif Butonunu Biraz Küçült (Ekranda yer kaplamasın) */
             .floating-teklif {
                 padding: 10px 15px;
                 font-size: 0.9rem;
@@ -443,7 +443,7 @@
     <section id="hakkimizda" class="section-padding">
         <h2 class="section-title">RSGrup Cambalkon Hakkında</h2>
         <p class="about-text">
-            RSGrup Cambalkon olarak, yılların getirdiği tecrübe ile yaşam alanlarınıza estetik ve değer katıyoruz. Amacımız sadece balkon kapatmak değil; evinize dört mevsim kullanabileceğiniz, yalıtımlı, güvenli ve şık yeni yaşam alanları kazandırmaktır.<br><br>
+            RSGrup Cambalkon olarak, Ankara ve çevresinde yılların getirdiği tecrübe ile yaşam alanlarınıza estetik ve değer katıyoruz. Amacımız sadece balkon kapatmak değil; evinize dört mevsim kullanabileceğiniz, yalıtımlı, güvenli ve şık yeni yaşam alanları kazandırmaktır.<br><br>
             Sektördeki yenilikleri yakından takip ediyor, birinci sınıf alüminyum profiller ve garantili camlar kullanarak kaliteden asla ödün vermiyoruz.
         </p>
     </section>
