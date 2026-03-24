@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSGrup Yönetim Paneli</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #2c3e50; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        
+        /* Şifre Ekranı */
+        #login-screen { text-align: center; }
+        #login-screen input { padding: 10px; margin-top: 10px; border-radius: 5px; border: none; font-size: 1rem; text-align: center; }
+        #login-screen button { padding: 10px 20px; margin-top: 10px; border: none; border-radius: 5px; background-color: #FF8C00; color: white; font-weight: bold; cursor: pointer; }
+        
+        /* Admin Paneli */
+        #admin-panel { display: none; background: #fff; color: #333; padding: 40px; border-radius: 10px; width: 100%; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h2 { text-align: center; color: #FF8C00; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #2c3e50; font-size: 0.95rem; }
+        input[type="number"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1.1rem; }
+        .btn-kaydet { width: 100%; padding: 15px; background-color: #27ae60; color: white; border: none; border-radius: 5px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .btn-kaydet:hover { background-color: #219150; }
+        .geri-don { display: block; text-align: center; margin-top: 15px; color: #7f8c8d; text-decoration: none; font-size: 0.9rem; }
+        .success-msg { display: none; background: #d4edda; color: #155724; padding: 10px; text-align: center; border-radius: 5px; margin-top: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <h2>Yönetim Girişi</h2>
+        <p>Lütfen admin şifresini giriniz:</p>
+        <input type="password" id="sifre-input" placeholder="Şifre"><br>
+        <button onclick="girisYap()">GİRİŞ YAP</button>
+    </div>
+
+    <div id="admin-panel">
+        <h2>Fiyat Güncelleme Paneli</h2>
+        
+        <div class="form-group">
+            <label>Katlanır Cambalkon m² Fiyatı (TL)</label>
+            <input type="number" id="katlanirFiyat" value="2500">
+        </div>
+
+        <div class="form-group">
+            <label>Sürme Sistem m² Fiyatı (TL)</label>
+            <input type="number" id="surmeFiyat" value="3000">
+        </div>
+
+        <div class="form-group">
+            <label>Isıcamlı Sistem m² Fiyatı (TL)</label>
+            <input type="number" id="isicamFiyat" value="3750">
+        </div>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+        <div class="form-group">
+            <label>Füme Cam Metrekare Farkı (TL)</label>
+            <input type="number" id="fumeFark" value="200">
+        </div>
+
+        <div class="form-group">
+            <label>Mavi / Yeşil Cam Metrekare Farkı (TL)</label>
+            <input type="number" id="maviYesilFark" value="300">
+        </div>
+
+        <button class="btn-kaydet" onclick="fiyatlariKaydet()">FİYATLARI KAYDET VE GÜNCELLE</button>
+        <div id="basari-mesaji" class="success-msg">Fiyatlar başarıyla güncellendi!</div>
+        <a href="teklif.html" class="geri-don">Teklif Sayfasına Git ve Test Et →</a>
+    </div>
+
+    <script>
+        // Sayfa açıldığında hafızada eski fiyatlar varsa doldur
+        window.onload = function() {
+            if(localStorage.getItem('katlanirFiyat')) document.getElementById('katlanirFiyat').value = localStorage.getItem('katlanirFiyat');
+            if(localStorage.getItem('surmeFiyat')) document.getElementById('surmeFiyat').value = localStorage.getItem('surmeFiyat');
+            if(localStorage.getItem('isicamFiyat')) document.getElementById('isicamFiyat').value = localStorage.getItem('isicamFiyat');
+            if(localStorage.getItem('fumeFark')) document.getElementById('fumeFark').value = localStorage.getItem('fumeFark');
+            if(localStorage.getItem('maviYesilFark')) document.getElementById('maviYesilFark').value = localStorage.getItem('maviYesilFark');
+        };
+
+        // GİRİŞ ŞİFRESİ (rsgrup123)
+        function girisYap() {
+            let girilenSifre = document.getElementById('sifre-input').value;
+            if(girilenSifre === "rsgrup123") {
+                document.getElementById('login-screen').style.display = "none";
+                document.getElementById('admin-panel').style.display = "block";
+            } else {
+                alert("Hatalı şifre!");
+            }
+        }
+
+        // Fiyatları Kaydet
+        function fiyatlariKaydet() {
+            localStorage.setItem('katlanirFiyat', document.getElementById('katlanirFiyat').value);
+            localStorage.setItem('surmeFiyat', document.getElementById('surmeFiyat').value);
+            localStorage.setItem('isicamFiyat', document.getElementById('isicamFiyat').value);
+            localStorage.setItem('fumeFark', document.getElementById('fumeFark').value);
+            localStorage.setItem('maviYesilFark', document.getElementById('maviYesilFark').value);
+            
+            document.getElementById('basari-mesaji').style.display = "block";
+            setTimeout(() => { document.getElementById('basari-mesaji').style.display = "none"; }, 3000);
+        }
+    </script>
+</body>
+</html>

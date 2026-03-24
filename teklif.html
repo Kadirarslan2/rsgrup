@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Teklif Al | RSGrup Cambalkon</title>
+    <style>
+        /* TEMEL AYARLAR */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
+        :root { --turuncu: #FF8C00; --koyu-gri: #2c3e50; --beyaz: #ffffff; }
+
+        /* ÜST MENÜ */
+        header { background-color: var(--beyaz); height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo-container { position: absolute; top: -65px; padding: 0; transition: transform 0.3s; z-index: 1001; }
+        .logo-container:hover { transform: scale(1.05); }
+        .logo-container img { height: 250px; width: auto; display: block; object-fit: contain; }
+        nav { margin-left: 200px; }
+        .geri-don { color: var(--koyu-gri); text-decoration: none; font-weight: bold; font-size: 1rem; transition: color 0.3s; }
+        .geri-don:hover { color: var(--turuncu); }
+
+        /* HESAPLAMA EKRANI */
+        .teklif-wrapper { padding: 120px 20px 50px; } 
+        .teklif-container { max-width: 600px; margin: 0 auto; padding: 40px; background: var(--beyaz); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .teklif-container h1 { text-align: center; color: var(--koyu-gri); margin-bottom: 10px; }
+        .teklif-container p { text-align: center; color: #777; margin-bottom: 30px; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--koyu-gri); }
+        .form-group select, .form-group input { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+        .form-group select:focus, .form-group input:focus { border-color: var(--turuncu); }
+
+        .btn-hesapla { width: 100%; padding: 15px; background-color: var(--turuncu); color: var(--beyaz); border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
+        .btn-hesapla:hover { background-color: #e67e22; }
+
+        #sonuc-alani { margin-top: 30px; padding: 20px; background-color: #fff3e6; border-left: 5px solid var(--turuncu); border-radius: 8px; display: none; text-align: center; animation: fadeIn 0.5s ease-in-out; }
+        #sonuc-alani h2 { color: var(--turuncu); font-size: 2rem; margin-bottom: 5px; }
+        .admin-not { font-size: 0.8rem; color: #888; margin-top: 10px; display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* MOBİL UYUM */
+        @media screen and (max-width: 768px) {
+            header { flex-direction: column; height: auto; padding: 15px; position: relative; }
+            .logo-container { position: relative; top: 0; margin-bottom: 15px; }
+            .logo-container img { height: 120px; }
+            nav { margin-left: 0; width: 100%; text-align: center; }
+            .teklif-wrapper { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Logo">
+        </a>
+        <nav>
+            <a href="index.html" class="geri-don">← Ana Sayfaya Dön</a>
+        </nav>
+    </header>
+
+    <div class="teklif-wrapper">
+        <div class="teklif-container">
+            <h1>Anında Fiyat Hesapla</h1>
+            <p>Sistemi ve metrekareyi girin, sistemimiz anlık kura göre ortalama maliyetinizi hesaplasın.</p>
+
+            <div class="form-group">
+                <label for="sistem">Sistem Türü</label>
+                <select id="sistem">
+                    <option value="katlanir">Standart Katlanır Cambalkon</option>
+                    <option value="surme">Sürme (Sürgülü) Sistem</option>
+                    <option value="isicamli">Isıcamlı Cambalkon</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="profil">Alüminyum Profil Rengi</label>
+                <select id="profil">
+                    <option value="antrasit">Antrasit Gri</option>
+                    <option value="eloksal">Natürel Eloksal (Gri)</option>
+                    <option value="beyaz">Beyaz</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="cam">Cam Rengi</label>
+                <select id="cam">
+                    <option value="seffaf">Şeffaf Cam</option>
+                    <option value="fume">Füme (Siyah) Cam</option>
+                    <option value="mavi">Mavi Cam</option>
+                    <option value="yesil">Yeşil Cam</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="metrekare">Kapatılacak Alan (m²)</label>
+                <input type="number" id="metrekare" placeholder="Örn: 12.5" step="0.1" min="1" required>
+            </div>
+
+            <button class="btn-hesapla" onclick="fiyatHesapla()">FİYATI GÖR</button>
+
+            <div id="sonuc-alani">
+                <p style="color: #555; font-weight: bold;">Tahmini Sistem Tutarı</p>
+                <h2><span id="fiyat-yazisi">0</span> ₺</h2>
+                <span class="admin-not">*Bu fiyat, net ölçülere ve seçilen özelliklere göre otomatik hesaplanmıştır. Net fiyat için ücretsiz keşif isteyiniz.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function fiyatHesapla() {
+            // 1. ADMIN PANELİNDEN HER SİSTEMİN KENDİ FİYATINI ÇEKİYORUZ
+            let katlanirFiyati = parseFloat(localStorage.getItem('katlanirFiyat')) || 2500;
+            let surmeFiyati = parseFloat(localStorage.getItem('surmeFiyat')) || 3000;
+            let isicamFiyati = parseFloat(localStorage.getItem('isicamFiyat')) || 3750;
+            
+            // 2. ADMIN PANELİNDEN CAM RENK FARKLARINI ÇEKİYORUZ
+            let fumeCamFarkiDegeri = parseFloat(localStorage.getItem('fumeFark')) || 200;
+            let maviYesilCamFarkiDegeri = parseFloat(localStorage.getItem('maviYesilFark')) || 300;
+
+            let sistem = document.getElementById('sistem').value;
+            let cam = document.getElementById('cam').value;
+            let m2 = parseFloat(document.getElementById('metrekare').value);
+
+            if (isNaN(m2) || m2 <= 0) {
+                alert("Lütfen geçerli bir metrekare (m²) değeri giriniz!");
+                return;
+            }
+
+            // Müşterinin seçtiği sisteme göre Taban Fiyatı belirliyoruz
+            let m2BirimFiyati = 0;
+            if (sistem === 'katlanir') {
+                m2BirimFiyati = katlanirFiyati;
+            } else if (sistem === 'surme') {
+                m2BirimFiyati = surmeFiyati;
+            } else if (sistem === 'isicamli') {
+                m2BirimFiyati = isicamFiyati;
+            }
+
+            // Eğer renkli cam seçildiyse üzerine o farkı ekliyoruz
+            let camFarki = 0;
+            if (cam === 'fume') {
+                camFarki = fumeCamFarkiDegeri;
+            } else if (cam === 'mavi' || cam === 'yesil') {
+                camFarki = maviYesilCamFarkiDegeri;
+            }
+
+            // MATEMATİKSEL HESAPLAMA (Seçilen Sistemin m2 Fiyatı + Renk Farkı) x Metrekare
+            m2BirimFiyati = m2BirimFiyati + camFarki;
+            let toplamTutar = m2BirimFiyati * m2;
+
+            document.getElementById('fiyat-yazisi').innerText = toplamTutar.toLocaleString('tr-TR', { maximumFractionDigits: 0 });
+            document.getElementById('sonuc-alani').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

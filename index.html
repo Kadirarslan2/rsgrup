@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSGrup Cambalkon | Modern Yaşam Alanları</title>
+    <style>
+        /* TEMEL AYARLAR */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { 
+            background-color: #f8f9fa; 
+            color: #333; 
+            line-height: 1.6; 
+            animation: sayfaAcilisi 1.2s ease-out; 
+        }
+        h1, h2, h3 { color: #2c3e50; }
+        a { text-decoration: none; }
+        
+        /* RENKLER */
+        :root { --turuncu: #FF8C00; --koyu-gri: #2c3e50; --acik-gri: #ecf0f1; --beyaz: #ffffff; }
+
+        @keyframes sayfaAcilisi {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ÜST MENÜ (Navbar) - MASAÜSTÜ */
+        header { 
+            background-color: var(--beyaz); 
+            height: 80px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        
+        /* LOGO ALANI - MASAÜSTÜ */
+        .logo-container { 
+            position: absolute; 
+            top: -65px; 
+            padding: 0; 
+            transition: transform 0.3s; 
+            z-index: 1001;
+        }
+        .logo-container:hover { transform: scale(1.05); }
+        .logo-container img { 
+            height: 250px; 
+            width: auto; 
+            display: block; 
+            object-fit: contain;
+        }
+        
+        nav { margin-left: 200px; } 
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav a { color: var(--koyu-gri); font-weight: 600; transition: color 0.3s, transform 0.3s; display: inline-block; }
+        nav a:hover { color: var(--turuncu); transform: translateY(-2px); }
+        
+        .btn-teklif { 
+            background-color: var(--turuncu); 
+            color: var(--beyaz); 
+            padding: 10px 25px; 
+            border-radius: 25px; 
+            font-weight: bold; 
+            transition: all 0.4s ease; 
+            box-shadow: 0 4px 6px rgba(255, 140, 0, 0.3);
+            text-align: center;
+        }
+        .btn-teklif:hover { 
+            background-color: #e67e22; 
+            transform: translateY(-3px) scale(1.05); 
+            box-shadow: 0 8px 15px rgba(255, 140, 0, 0.5); 
+        }
+
+        /* HERO BÖLÜMÜ */
+        .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('katlanır.jpg') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--beyaz); padding: 0 20px; }
+        .hero h1 { color: var(--beyaz); font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin-bottom: 40px; }
+
+        .btn-dev {
+            background-color: var(--turuncu);
+            color: var(--beyaz);
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            animation: pulse 2s infinite; 
+        }
+        .btn-dev:hover {
+            animation: none; 
+            background-color: #e67e22;
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 140, 0, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 140, 0, 0); }
+        }
+
+        /* ORTAK BÖLÜM AYARLARI */
+        .section-padding { padding: 80px 5%; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: var(--koyu-gri); position: relative; }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--turuncu);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle { text-align: center; color: #7f8c8d; margin-bottom: 40px; font-size: 1.1rem; }
+
+        /* BİLGİ KARTLARI (SİSTEMLER VE CAMLAR) */
+        .card-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+        .info-card { 
+            background: var(--beyaz); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            width: 100%; 
+            max-width: 500px; 
+            transition: all 0.4s ease; 
+        }
+        .info-card:hover { 
+            transform: translateY(-15px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15); 
+        }
+        .info-card img { width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s; }
+        .info-card:hover img { transform: scale(1.05); }
+        
+        /* YAZILARI ORTALAMA İŞLEMİ BURADA YAPILDI */
+        .info-card-content { padding: 30px; text-align: center; } /* Tüm kart yazıları ortalandı */
+        .info-card h3 { color: var(--turuncu); margin-bottom: 15px; font-size: 1.5rem; }
+        
+        /* Listeleri ortada derli toplu göstermek için özel ayar */
+        .vs-list { display: inline-block; text-align: left; margin-top: 15px; list-style: none; } 
+        .vs-list li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .vs-list li::before { content: '✓'; color: var(--turuncu); font-weight: bold; position: absolute; left: 0; }
+
+        /* VİTRİN / REFERANSLAR */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .gallery-item { height: 250px; border-radius: 10px; overflow: hidden; position: relative; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: all 0.5s ease; }
+        .gallery-item:hover img { 
+            transform: scale(1.1) rotate(1deg); 
+            filter: brightness(0.8); 
+            cursor: pointer; 
+        }
+
+        /* METİNLERİ ORTALAMA */
+        .about-text { max-width: 900px; margin: 0 auto; text-align: center; font-size: 1.15rem; color: #555; }
+
+        footer { background: var(--koyu-gri); color: var(--beyaz); text-align: center; padding: 40px 20px; margin-top: 50px;}
+
+
+        /* ======================================================= */
+        /* MOBİL UYUMLULUK (TELEFON EKRANLARI İÇİN ÖZEL AYARLAR) */
+        /* ======================================================= */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column; /* Menüyü yan yana değil alt alta dizer */
+                height: auto;
+                padding: 15px;
+                position: relative; /* Telefondan kaydırınca menü üstte kalıp ekranı işgal etmesin diye yapışkanlığı iptal ettik */
+            }
+
+            .logo-container {
+                position: relative; /* Taşmayı iptal et, normal kutuya girsin */
+                top: 0;
+                margin-bottom: 15px;
+            }
+
+            .logo-container img {
+                height: 120px; /* Logoyu telefonda devasa durmaması için küçülttük */
+            }
+
+            nav {
+                margin-left: 0; /* Sağdan itmeyi iptal ettik */
+                width: 100%;
+            }
+
+            nav ul {
+                flex-wrap: wrap; /* Yazılar sığmazsa alt satıra geçsin */
+                justify-content: center; /* Menü yazılarını ortala */
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+
+            nav a {
+                font-size: 0.95rem; /* Yazıları telefonda hafif küçülttük */
+            }
+
+            .btn-teklif {
+                width: 100%; /* Buton telefonda tam boy olsun, baş parmakla basması kolaylaşsın */
+            }
+
+            .hero h1 {
+                font-size: 2.2rem; /* Başlığı telefona sığdırdık */
+            }
+
+            .section-padding {
+                padding: 50px 5%; /* Boşlukları daralttık */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Logo">
+        </a>
+        
+        <nav>
+            <ul>
+                <li><a href="#nedir">Cambalkon Nedir?</a></li>
+                <li><a href="#sistemler">Sistemler</a></li>
+                <li><a href="#cam-secenekleri">Cam Seçenekleri</a></li>
+                <li><a href="#referanslar">Referanslar</a></li>
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+            </ul>
+        </nav>
+        <a href="teklif.html" class="btn-teklif">Online Teklif Al</a>
+    </header>
+
+    <section class="hero">
+        <h1>Balkonunuzu Dört Mevsim Yaşayın</h1>
+        <p>Evinizin mimarisine değer katan, soğuk kış günlerinden sıcak yaz akşamlarına kadar her mevsim konfor sunan modern cambalkon ve alüminyum sistemleri.</p>
+        <a href="#sistemler" class="btn-dev">Sistemlerimizi Keşfedin</a>
+    </section>
+
+    <section id="nedir" class="section-padding">
+        <h2 class="section-title">Neden Cambalkon?</h2>
+        <p class="about-text">
+            Cambalkon, evinizin dış dünya ile bağlantısını kesmeden, balkonunuzu evinizin kullanışlı bir odası haline getiren modern bir yalıtım ve dekorasyon sistemidir. Manzaranızı kapatmaz, binanızın dış görünümünü bozmaz ve imar mevzuatlarına uygundur.
+        </p>
+    </section>
+
+    <section id="sistemler" class="section-padding" style="background-color: var(--beyaz);">
+        <h2 class="section-title">Hangi Sistemi Seçmelisiniz?</h2>
+        <p class="section-subtitle">Mekanınızın yapısına ve kullanım amacınıza en uygun sistemi belirleyin.</p>
+        
+        <div class="card-container">
+            <div class="info-card">
+                <img src="katlanır.jpg" alt="Katlanır Cambalkon">
+                <div class="info-card-content">
+                    <h3>Katlanır Cambalkon</h3>
+                    <p>Cam panellerin raylar üzerinde hareket ederek bir köşede akordeon gibi toplanmasını sağlayan klasik sistemdir.</p>
+                    <ul class="vs-list">
+                        <li><b>Tamamen Açılabilir:</b> Balkonunuzu %100 açık hale getirebilirsiniz.</li>
+                        <li><b>Kolay Temizlik:</b> Camlar içeri katlandığı için dış yüzeylerini evinizin içinden güvenle silebilirsiniz.</li>
+                        <li><b>Kullanım Alanı:</b> Ev balkonları, kış bahçeleri ve teraslar için en ideal ve yaygın çözümdür.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <img src="sürme.jpg" alt="Sürme Cambalkon">
+                <div class="info-card-content">
+                    <h3>Sürme (Sürgülü) Sistem</h3>
+                    <p>Cam panellerin kendi etrafında dönmeden, raylar üzerinde sağa veya sola kaydırılarak üst üste bindiği sistemdir.</p>
+                    <ul class="vs-list">
+                        <li><b>Alan Tasarrufu:</b> Camlar içeri katlanmadığı için dar balkonlarda veya iç mekanda yer kaplamaz.</li>
+                        <li><b>Pratik Kullanım:</b> Eşikli veya eşiksiz ray seçenekleriyle çok hızlı açılıp kapanır.</li>
+                        <li><b>Kullanım Alanı:</b> Cafe, restoran, ofis bölmeleri ve dar alanlı ev balkonları için mükemmeldir.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cam-secenekleri" class="section-padding">
+        <h2 class="section-title">Cam Seçimi: Isıcam mı, 8mm mi?</h2>
+        <p class="section-subtitle">Yalıtım ihtiyacınıza göre doğru camı tercih edin.</p>
+        
+        <div class="card-container">
+            <div class="info-card">
+                <img src="mm.jpg" alt="Standart 8mm Temperli Cam">
+                <div class="info-card-content">
+                    <h3>Standart 8mm Temperli Cam</h3>
+                    <p>Tek katmanlı, darbelere karşı normal cama göre 5 kat daha dayanıklı güçlendirilmiş camdır.</p>
+                    <ul class="vs-list">
+                        <li>Rüzgar, yağmur, toz ve yapraklara karşı tam koruma sağlar.</li>
+                        <li>Bahar ve yaz aylarında kullanım için mükemmeldir.</li>
+                        <li>Isı yalıtımı düzeyi düşüktür.</li>
+                        <li>Ekonomik bir çözümdür.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <img src="ısıcam.jpg" alt="Isıcamlı Cambalkon">
+                <div class="info-card-content">
+                    <h3>Isıcamlı (Çift Cam) Sistem</h3>
+                    <p>İki cam panel arasında yalıtım boşluğu bulunan, maksimum yalıtım sağlayan sistemdir.</p>
+                    <ul class="vs-list">
+                        <li><b>Yüksek Isı Yalıtımı:</b> 8mm cama göre ısı kaybını %50'ye kadar azaltır.</li>
+                        <li><b>Ses Yalıtımı:</b> Dışarıdaki gürültüyü ciddi oranda keser.</li>
+                        <li><b>Terleme Yapmaz:</b> İki cam arasındaki sistem sayesinde buğulanma minimuma iner.</li>
+                        <li>Balkonunuzu evin gerçek bir odası yapmak istiyorsanız tek seçenektir.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="referanslar" class="section-padding" style="background-color: var(--beyaz);">
+        <h2 class="section-title">Fotoğraf Vitrini</h2>
+        <p class="section-subtitle">Tamamladığımız bazı projelerden şık detaylar.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 1"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600566753086-00f18efc2291?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 2"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 3"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600585154526-990dced4ea0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 4"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1545042746-ec9e5a59e359?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 5"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1524815436621-722a5796b412?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 6"></div>
+        </div>
+    </section>
+
+    <section id="hakkimizda" class="section-padding">
+        <h2 class="section-title">RSGrup Cambalkon Hakkında</h2>
+        <p class="about-text">
+            RSGrup Cambalkon olarak, Ankara ve çevresinde yılların getirdiği tecrübe ile yaşam alanlarınıza estetik ve değer katıyoruz. Amacımız sadece balkon kapatmak değil; evinize dört mevsim kullanabileceğiniz, yalıtımlı, güvenli ve şık yeni yaşam alanları kazandırmaktır.<br><br>
+            Sektördeki yenilikleri yakından takip ediyor, birinci sınıf alüminyum profiller ve garantili camlar kullanarak kaliteden asla ödün vermiyoruz.
+        </p>
+    </section>
+
+    <footer>
+        <p>Bize Ulaşın: info@rsgrupcambalkon.com | Telefon: 0555 555 55 55</p>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">&copy; 2026 RSGrup Cambalkon. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body>
+</html>
