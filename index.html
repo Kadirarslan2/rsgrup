@@ -89,6 +89,7 @@
             background-color: var(--koyu-gri);
             margin: 6px 0;
             transition: 0.4s;
+            border-radius: 3px;
         }
 
         /* HERO BÖLÜMÜ */
@@ -217,8 +218,8 @@
         @media screen and (max-width: 768px) {
             header {
                 justify-content: space-between;
-                height: 80px;
-                padding: 0 5%;
+                height: auto;
+                padding: 15px 5%;
                 position: relative;
             }
 
@@ -229,7 +230,7 @@
             }
 
             .logo-container img {
-                height: 60px; /* Logoyu telefonda devasa durmaması için küçülttük ve sığdırdık */
+                height: 120px; /* DİKKAT: Telefondaki logo boyutu tam 2 katına çıkarıldı! */
             }
 
             /* Hamburger Menü İkonu Göster */
@@ -241,13 +242,14 @@
             nav {
                 margin-left: 0; 
                 width: 100%;
-                display: none; /* İlk aşamada gizle */
+                display: none; 
                 position: absolute;
-                top: 80px;
+                top: 100%; /* Logonun boyutuna göre hemen altından açılsın */
                 left: 0;
                 background-color: var(--beyaz);
                 padding: 20px 0;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 999;
             }
 
             /* Mobil Menü Açık Sınıfı */
@@ -256,18 +258,18 @@
             }
 
             nav ul {
-                flex-direction: column; /* Yazıları alt alta dizer */
-                align-items: center; /* Ortala */
+                flex-direction: column; 
+                align-items: center; 
                 gap: 20px;
             }
 
             nav a {
-                font-size: 1.1rem; /* Telefondan okumayı kolaylaştır */
+                font-size: 1.1rem; 
                 display: block;
                 width: 100%;
                 text-align: center;
                 padding: 10px;
-                border-bottom: 1px solid #eee; /* Aralara ince çizgi */
+                border-bottom: 1px solid #eee; 
             }
 
             nav li:last-child a {
@@ -279,11 +281,11 @@
             }
 
             .hero h1 {
-                font-size: 2.2rem; /* Başlığı telefona sığdırdık */
+                font-size: 2.2rem; 
             }
 
             .section-padding {
-                padding: 50px 5%; /* Boşlukları daralttık */
+                padding: 50px 5%; 
             }
 
             .section-title { font-size: 1.8rem; }
@@ -295,7 +297,6 @@
             .info-card-content { padding: 20px; }
             .vs-list { font-size: 0.95rem; }
 
-            /* Telefondan kaydırınca menü üstte kalıp ekranı işgal etmesin diye yapışkanlığı iptal ettik */
             header { position: relative; }
         }
     </style>
@@ -320,6 +321,7 @@
                 <li><a href="#cam-secenekleri">Cam Seçenekleri</a></li>
                 <li><a href="#referanslar">Referanslar</a></li>
                 <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li style="text-align:center; padding: 20px 0;"><a href="teklif.html" style="background-color: var(--turuncu); color: white; padding: 10px 25px; border-radius: 25px; display: inline-block;">Online Teklif Al</a></li>
             </ul>
         </nav>
         <a href="teklif.html" class="btn-teklif">Online Teklif Al</a>
@@ -338,12 +340,102 @@
         </p>
     </section>
 
+    <section id="sistemler" class="section-padding" style="background-color: var(--beyaz);">
+        <h2 class="section-title">Hangi Sistemi Seçmelisiniz?</h2>
+        <p class="section-subtitle">Mekanınızın yapısına ve kullanım amacınıza en uygun sistemi belirleyin.</p>
+        
+        <div class="card-container">
+            <div class="info-card">
+                <img src="katlanır.jpg" alt="Katlanır Cambalkon">
+                <div class="info-card-content">
+                    <h3>Katlanır Cambalkon</h3>
+                    <p>Cam panellerin raylar üzerinde hareket ederek bir köşede akordeon gibi toplanmasını sağlayan klasik sistemdir.</p>
+                    <ul class="vs-list">
+                        <li><b>Tamamen Açılabilir:</b> Balkonunuzu %100 açık hale getirebilirsiniz.</li>
+                        <li><b>Kolay Temizlik:</b> Camlar içeri katlandığı için dış yüzeylerini evinizin içinden güvenle silebilirsiniz.</li>
+                        <li><b>Kullanım Alanı:</b> Ev balkonları, kış bahçeleri ve teraslar için en ideal ve yaygın çözümdür.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <img src="sürme.jpg" alt="Sürme Cambalkon">
+                <div class="info-card-content">
+                    <h3>Sürme (Sürgülü) Sistem</h3>
+                    <p>Cam panellerin kendi etrafında dönmeden, raylar üzerinde sağa veya sola kaydırılarak üst üste bindiği sistemdir.</p>
+                    <ul class="vs-list">
+                        <li><b>Alan Tasarrufu:</b> Camlar içeri katlanmadığı için dar balkonlarda veya iç mekanda yer kaplamaz.</li>
+                        <li><b>Pratik Kullanım:</b> Eşikli veya eşiksiz ray seçenekleriyle çok hızlı açılıp kapanır.</li>
+                        <li><b>Kullanım Alanı:</b> Cafe, restoran, ofis bölmeleri ve dar alanlı ev balkonları için mükemmeldir.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cam-secenekleri" class="section-padding">
+        <h2 class="section-title">Cam Seçimi: Isıcam mı, 8mm mi?</h2>
+        <p class="section-subtitle">Yalıtım ihtiyacınıza göre doğru camı tercih edin.</p>
+        
+        <div class="card-container">
+            <div class="info-card">
+                <img src="mm.jpg" alt="Standart 8mm Temperli Cam">
+                <div class="info-card-content">
+                    <h3>Standart 8mm Temperli Cam</h3>
+                    <p>Tek katmanlı, darbelere karşı normal cama göre 5 kat daha dayanıklı güçlendirilmiş camdır.</p>
+                    <ul class="vs-list">
+                        <li>Rüzgar, yağmur, toz ve yapraklara karşı tam koruma sağlar.</li>
+                        <li>Bahar ve yaz aylarında kullanım için mükemmeldir.</li>
+                        <li>Isı yalıtımı düzeyi düşüktür.</li>
+                        <li>Ekonomik bir çözümdür.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <img src="ısıcam.jpg" alt="Isıcamlı Cambalkon">
+                <div class="info-card-content">
+                    <h3>Isıcamlı (Çift Cam) Sistem</h3>
+                    <p>İki cam panel arasında yalıtım boşluğu bulunan, maksimum yalıtım sağlayan sistemdir.</p>
+                    <ul class="vs-list">
+                        <li><b>Yüksek Isı Yalıtımı:</b> 8mm cama göre ısı kaybını %50'ye kadar azaltır.</li>
+                        <li><b>Ses Yalıtımı:</b> Dışarıdaki gürültüyü ciddi oranda keser.</li>
+                        <li><b>Terleme Yapmaz:</b> İki cam arasındaki sistem sayesinde buğulanma minimuma iner.</li>
+                        <li>Balkonunuzu evin gerçek bir odası yapmak istiyorsanız tek seçenektir.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="referanslar" class="section-padding" style="background-color: var(--beyaz);">
+        <h2 class="section-title">Fotoğraf Vitrini</h2>
+        <p class="section-subtitle">Tamamladığımız bazı projelerden şık detaylar.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 1"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600566753086-00f18efc2291?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 2"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 3"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600585154526-990dced4ea0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 4"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1545042746-ec9e5a59e359?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 5"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1524815436621-722a5796b412?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proje 6"></div>
+        </div>
+    </section>
+
+    <section id="hakkimizda" class="section-padding">
+        <h2 class="section-title">RSGrup Cambalkon Hakkında</h2>
+        <p class="about-text">
+            RSGrup Cambalkon olarak, Ankara ve çevresinde yılların getirdiği tecrübe ile yaşam alanlarınıza estetik ve değer katıyoruz. Amacımız sadece balkon kapatmak değil; evinize dört mevsim kullanabileceğiniz, yalıtımlı, güvenli ve şık yeni yaşam alanları kazandırmaktır.<br><br>
+            Sektördeki yenilikleri yakından takip ediyor, birinci sınıf alüminyum profiller ve garantili camlar kullanarak kaliteden asla ödün vermiyoruz.
+        </p>
+    </section>
+
     <div class="contact-bubbles">
         <a href="https://instagram.com/rs.grupcambalkon" target="_blank" class="contact-bubble instagram-bubble">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
         </a>
         <a href="https://wa.me/904545569098?text=Merhaba, sitenizden%20ulaşıyorum.%20Cambalkon%20hakkında%20keşif%20rica%20edecektim." target="_blank" class="contact-bubble whatsapp-bubble">
-            <img src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/get-logo-whatsapp-png-pictures-1.png" alt="WhatsApp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
         </a>
     </div>
 
