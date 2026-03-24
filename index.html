@@ -75,11 +75,6 @@
             box-shadow: 0 8px 15px rgba(255, 140, 0, 0.5); 
         }
 
-        /* MOBİL İÇİN ÖZEL BUTON - MASAÜSTÜNDE GİZLİ */
-        .mobile-only-btn {
-            display: none;
-        }
-
         /* MOBİL MENÜ BUTONU (Hamburger) */
         .mobile-menu-icon {
             display: none;
@@ -178,9 +173,9 @@
 
         .about-text { max-width: 900px; margin: 0 auto; text-align: center; font-size: 1.15rem; color: #555; }
 
-        footer { background: var(--koyu-gri); color: var(--beyaz); text-align: center; padding: 40px 20px; margin-top: 50px;}
+        footer { background: var(--koyu-gri); color: var(--beyaz); text-align: center; padding: 40px 20px 80px 20px; margin-top: 50px;}
 
-        /* İLETİŞİM BALONCUKLARI - SABİT */
+        /* İLETİŞİM BALONCUKLARI - SABİT (SAĞ ALT) */
         .contact-bubbles {
             position: fixed;
             bottom: 20px;
@@ -205,17 +200,35 @@
             background-color: var(--beyaz);
         }
 
-        .contact-bubble img {
-            height: 40px;
-            width: auto;
-        }
-
-        .contact-bubble:hover {
-            transform: scale(1.1) translateY(-5px);
-        }
-
+        .contact-bubble img { height: 40px; width: auto; }
+        .contact-bubble:hover { transform: scale(1.1) translateY(-5px); }
         .whatsapp-bubble { background-color: #25D366; }
         .instagram-bubble { background-color: var(--beyaz); border: 2px solid #E1306C; }
+
+        /* TEKLİF AL BALONCUĞU - SABİT (SOL ALT) */
+        .floating-teklif {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--turuncu);
+            color: var(--beyaz);
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .floating-teklif:hover {
+            transform: translateY(-5px) scale(1.05);
+            background-color: #e67e22;
+        }
 
         /* ======================================================= */
         /* MOBİL UYUMLULUK (TELEFON EKRANLARI İÇİN ÖZEL AYARLAR) */
@@ -223,19 +236,20 @@
         @media screen and (max-width: 768px) {
             header {
                 justify-content: space-between; 
-                height: 100px; /* Panel boyu logonun sığması için biraz artırıldı */
+                height: 60px; 
                 padding: 0 5%;
                 position: relative;
             }
 
             .logo-container {
-                position: relative; /* Logoyu panelin içine hapsettik, resmin üstüne taşmayacak */
+                position: absolute; 
                 top: 0;
-                left: 0;
+                left: 5%;
+                margin-bottom: 0;
             }
 
             .logo-container img {
-                height: 150px; /* DİKKAT: Telefondaki logo boyutu tam 2 katına çıkarıldı! */
+                height: 160px; /* <--- LOGO BOYUTUNU BURADAN DEĞİŞTİREBİLİRSİN */
             }
 
             /* Hamburger Menü İkonu Göster */
@@ -249,7 +263,7 @@
                 width: 100%;
                 display: none; 
                 position: absolute;
-                top: 100px; /* Panel 100px olduğu için menü tam onun altından açılsın */
+                top: 60px; 
                 left: 0;
                 background-color: var(--beyaz);
                 padding: 20px 0;
@@ -285,29 +299,24 @@
                 display: none; /* Üstteki buton gizlensin */
             }
 
-            /* Mobildeki buton görünür olsun */
-            .mobile-only-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem; 
-            }
-
-            .section-padding {
-                padding: 50px 5%; 
-            }
-
+            .hero h1 { font-size: 2.2rem; }
+            .section-padding { padding: 50px 5%; }
             .section-title { font-size: 1.8rem; }
             .section-subtitle { font-size: 1rem; }
             .about-text { font-size: 1rem; }
-            
             .info-card img { height: 200px; }
             .info-card h3 { font-size: 1.3rem; }
             .info-card-content { padding: 20px; }
             .vs-list { font-size: 0.95rem; }
 
             header { position: relative; }
+            
+            /* Mobilde Sabit Teklif Butonunu Biraz Küçült */
+            .floating-teklif {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                bottom: 25px;
+            }
         }
     </style>
 </head>
@@ -331,9 +340,6 @@
                 <li><a href="#cam-secenekleri">Cam Seçenekleri</a></li>
                 <li><a href="#referanslar">Referanslar</a></li>
                 <li><a href="#hakkimizda">Hakkımızda</a></li>
-                <li class="mobile-only-btn" style="text-align:center; padding: 20px 0;">
-                    <a href="teklif.html" style="background-color: var(--turuncu); color: white; padding: 10px 25px; border-radius: 25px; display: inline-block;">Online Teklif Al</a>
-                </li>
             </ul>
         </nav>
         <a href="teklif.html" class="btn-teklif">Online Teklif Al</a>
@@ -437,10 +443,14 @@
     <section id="hakkimizda" class="section-padding">
         <h2 class="section-title">RSGrup Cambalkon Hakkında</h2>
         <p class="about-text">
-            RSGrup Cambalkon olarak, Ankara ve çevresinde yılların getirdiği tecrübe ile yaşam alanlarınıza estetik ve değer katıyoruz. Amacımız sadece balkon kapatmak değil; evinize dört mevsim kullanabileceğiniz, yalıtımlı, güvenli ve şık yeni yaşam alanları kazandırmaktır.<br><br>
+            RSGrup Cambalkon olarak, yılların getirdiği tecrübe ile yaşam alanlarınıza estetik ve değer katıyoruz. Amacımız sadece balkon kapatmak değil; evinize dört mevsim kullanabileceğiniz, yalıtımlı, güvenli ve şık yeni yaşam alanları kazandırmaktır.<br><br>
             Sektördeki yenilikleri yakından takip ediyor, birinci sınıf alüminyum profiller ve garantili camlar kullanarak kaliteden asla ödün vermiyoruz.
         </p>
     </section>
+
+    <a href="teklif.html" class="floating-teklif">
+        📝 Online Teklif Al
+    </a>
 
     <div class="contact-bubbles">
         <a href="https://instagram.com/rs.grupcambalkon" target="_blank" class="contact-bubble instagram-bubble">
