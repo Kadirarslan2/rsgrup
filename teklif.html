@@ -10,42 +10,58 @@
         body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
         :root { --turuncu: #FF8C00; --koyu-gri: #2c3e50; --beyaz: #ffffff; }
 
-        /* ÜST MENÜ */
-        header { background-color: var(--beyaz); height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        /* ÜST MENÜ VE LOGO (Ana sayfa ile aynı şık yapı) */
+        header { background-color: var(--beyaz); height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .logo-container { position: absolute; top: -65px; padding: 0; transition: transform 0.3s; z-index: 1001; }
         .logo-container:hover { transform: scale(1.05); }
         .logo-container img { height: 250px; width: auto; display: block; object-fit: contain; }
-        nav { margin-left: 200px; }
-        .geri-don { color: var(--koyu-gri); text-decoration: none; font-weight: bold; font-size: 1rem; transition: color 0.3s; }
+        
+        .geri-don { color: var(--koyu-gri); text-decoration: none; font-weight: bold; font-size: 1rem; transition: color 0.3s; margin-left: auto; display: flex; align-items: center; gap: 5px; }
         .geri-don:hover { color: var(--turuncu); }
 
-        /* HESAPLAMA EKRANI */
-        .teklif-wrapper { padding: 120px 20px 50px; } 
-        .teklif-container { max-width: 600px; margin: 0 auto; padding: 40px; background: var(--beyaz); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        .teklif-container h1 { text-align: center; color: var(--koyu-gri); margin-bottom: 10px; }
-        .teklif-container p { text-align: center; color: #777; margin-bottom: 30px; }
+        /* HESAPLAMA EKRANI (Daha modern, yumuşak gölgeli) */
+        .teklif-wrapper { padding: 100px 20px 50px; display: flex; justify-content: center; } 
+        .teklif-container { width: 100%; max-width: 650px; background: var(--beyaz); padding: 40px; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        .teklif-container h1 { text-align: center; color: var(--koyu-gri); margin-bottom: 10px; font-size: 2.2rem; }
+        .teklif-container p { text-align: center; color: #777; margin-bottom: 30px; font-size: 1.1rem; }
 
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--koyu-gri); }
-        .form-group select, .form-group input { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; outline: none; transition: border-color 0.3s; }
-        .form-group select:focus, .form-group input:focus { border-color: var(--turuncu); }
+        /* FORM ELEMANLARI */
+        .form-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
+        .form-group { flex: 1; min-width: 250px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--koyu-gri); font-size: 0.95rem; }
+        .form-group select, .form-group input { width: 100%; padding: 14px 15px; border: 2px solid #e1e8ed; border-radius: 10px; font-size: 1rem; outline: none; transition: all 0.3s; background-color: #fdfdfd; color: #444; }
+        .form-group select:focus, .form-group input:focus { border-color: var(--turuncu); background-color: #fff; box-shadow: 0 0 0 4px rgba(255, 140, 0, 0.1); }
 
-        .btn-hesapla { width: 100%; padding: 15px; background-color: var(--turuncu); color: var(--beyaz); border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
-        .btn-hesapla:hover { background-color: #e67e22; }
+        .btn-hesapla { width: 100%; padding: 16px; background-color: var(--koyu-gri); color: var(--beyaz); border: none; border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.3s; margin-top: 15px; box-shadow: 0 5px 15px rgba(44, 62, 80, 0.2); }
+        .btn-hesapla:hover { background-color: #1a252f; transform: translateY(-2px); }
 
-        #sonuc-alani { margin-top: 30px; padding: 20px; background-color: #fff3e6; border-left: 5px solid var(--turuncu); border-radius: 8px; display: none; text-align: center; animation: fadeIn 0.5s ease-in-out; }
-        #sonuc-alani h2 { color: var(--turuncu); font-size: 2rem; margin-bottom: 5px; }
-        .admin-not { font-size: 0.8rem; color: #888; margin-top: 10px; display: block; }
+        /* SONUÇ ALANI (Animasyonlu ve Vurgulu) */
+        #sonuc-alani { margin-top: 35px; padding: 30px 20px; background: linear-gradient(135deg, #fff9f2 0%, #fff 100%); border: 2px dashed var(--turuncu); border-radius: 15px; display: none; text-align: center; animation: slideDown 0.5s ease-out; }
+        #sonuc-alani h3 { color: #555; font-size: 1.1rem; margin-bottom: 10px; font-weight: 600; }
+        #sonuc-alani h2 { color: var(--turuncu); font-size: 2.8rem; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(255,140,0,0.1); }
+        .admin-not { font-size: 0.85rem; color: #888; display: block; margin-bottom: 20px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        /* SİPARİŞİ WHATSAPP'A GÖNDER BUTONU */
+        .btn-whatsapp-gonder { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background-color: #25D366; color: white; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; text-decoration: none; transition: all 0.3s; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); width: 100%; }
+        .btn-whatsapp-gonder:hover { background-color: #20bd5a; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); }
+        .btn-whatsapp-gonder img { height: 24px; width: auto; filter: brightness(0) invert(1); }
+
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* MOBİL UYUM */
         @media screen and (max-width: 768px) {
-            header { flex-direction: column; height: auto; padding: 15px; position: relative; }
-            .logo-container { position: relative; top: 0; margin-bottom: 15px; }
-            .logo-container img { height: 120px; }
-            nav { margin-left: 0; width: 100%; text-align: center; }
-            .teklif-wrapper { padding: 40px 20px; }
+            header { height: 70px; padding: 0 5%; position: relative; }
+            .logo-container { position: absolute; top: 0; left: 5%; }
+            .logo-container img { height: 160px; /* Logoyu telefonda büyüttük */ }
+            .geri-don { font-size: 0.9rem; }
+            
+            .teklif-wrapper { padding: 50px 15px; }
+            .teklif-container { padding: 25px 20px; }
+            .teklif-container h1 { font-size: 1.8rem; }
+            
+            .form-row { flex-direction: column; gap: 0; margin-bottom: 0; }
+            .form-group { margin-bottom: 20px; width: 100%; }
+            #sonuc-alani h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -53,105 +69,120 @@
 
     <header>
         <a href="index.html" class="logo-container">
-            <img src="logo.png" alt="Logo">
+            <img src="logo.png" alt="RSGrup Logo">
         </a>
-        <nav>
-            <a href="index.html" class="geri-don">← Ana Sayfaya Dön</a>
-        </nav>
+        <a href="index.html" class="geri-don">🏠 Ana Sayfa</a>
     </header>
 
     <div class="teklif-wrapper">
         <div class="teklif-container">
-            <h1>Anında Fiyat Hesapla</h1>
-            <p>Sistemi ve metrekareyi girin, sistemimiz anlık kura göre ortalama maliyetinizi hesaplasın.</p>
+            <h1>Sisteminizi Oluşturun</h1>
+            <p>Balkon ölçünüzü ve tercihlerinizi girin, anında ortalama fiyat alın ve tek tıkla ücretsiz keşif isteyin.</p>
 
-            <div class="form-group">
-                <label for="sistem">Sistem Türü</label>
-                <select id="sistem">
-                    <option value="katlanir">Standart Katlanır Cambalkon</option>
-                    <option value="surme">Sürme (Sürgülü) Sistem</option>
-                    <option value="isicamli">Isıcamlı Cambalkon</option>
-                </select>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="sistem">Sistem Türü</label>
+                    <select id="sistem">
+                        <option value="katlanir">Standart Katlanır Cambalkon</option>
+                        <option value="surme">Sürme (Sürgülü) Sistem</option>
+                        <option value="isicamli">Isıcamlı Cambalkon</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="profil">Alüminyum Profil Rengi</label>
+                    <select id="profil">
+                        <option value="antrasit">Antrasit Gri</option>
+                        <option value="eloksal">Natürel Eloksal (Gri)</option>
+                        <option value="beyaz">Beyaz</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="profil">Alüminyum Profil Rengi</label>
-                <select id="profil">
-                    <option value="antrasit">Antrasit Gri</option>
-                    <option value="eloksal">Natürel Eloksal (Gri)</option>
-                    <option value="beyaz">Beyaz</option>
-                </select>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cam">Cam Rengi</label>
+                    <select id="cam">
+                        <option value="seffaf">Şeffaf Cam</option>
+                        <option value="fume">Füme (Siyah) Cam</option>
+                        <option value="mavi">Mavi Cam</option>
+                        <option value="yesil">Yeşil Cam</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="metrekare">Kapatılacak Alan (m²)</label>
+                    <input type="number" id="metrekare" placeholder="Örn: 12.5" step="0.1" min="1" required>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="cam">Cam Rengi</label>
-                <select id="cam">
-                    <option value="seffaf">Şeffaf Cam</option>
-                    <option value="fume">Füme (Siyah) Cam</option>
-                    <option value="mavi">Mavi Cam</option>
-                    <option value="yesil">Yeşil Cam</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="metrekare">Kapatılacak Alan (m²)</label>
-                <input type="number" id="metrekare" placeholder="Örn: 12.5" step="0.1" min="1" required>
-            </div>
-
-            <button class="btn-hesapla" onclick="fiyatHesapla()">FİYATI GÖR</button>
+            <button class="btn-hesapla" onclick="fiyatHesapla()">HESAPLA</button>
 
             <div id="sonuc-alani">
-                <p style="color: #555; font-weight: bold;">Tahmini Sistem Tutarı</p>
+                <h3>Tahmini Sistem Tutarı</h3>
                 <h2><span id="fiyat-yazisi">0</span> ₺</h2>
-                <span class="admin-not">*Bu fiyat, net ölçülere ve seçilen özelliklere göre otomatik hesaplanmıştır. Net fiyat için ücretsiz keşif isteyiniz.</span>
+                <span class="admin-not">*Bu fiyat, girilen ölçülere göre hesaplanmış yaklaşık bir tutardır. Net fiyatlandırma ve indirimler ücretsiz keşif sonrasında yapılmaktadır.</span>
+                
+                <a href="#" id="wp-gonder-btn" target="_blank" class="btn-whatsapp-gonder">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WP">
+                    Bu Teklif İçin Keşif İste
+                </a>
             </div>
         </div>
     </div>
 
     <script>
         function fiyatHesapla() {
-            // 1. ADMIN PANELİNDEN HER SİSTEMİN KENDİ FİYATINI ÇEKİYORUZ
+            // ADMIN PANELİNDEN VERİLERİ ÇEKİYORUZ
             let katlanirFiyati = parseFloat(localStorage.getItem('katlanirFiyat')) || 2500;
             let surmeFiyati = parseFloat(localStorage.getItem('surmeFiyat')) || 3000;
             let isicamFiyati = parseFloat(localStorage.getItem('isicamFiyat')) || 3750;
-            
-            // 2. ADMIN PANELİNDEN CAM RENK FARKLARINI ÇEKİYORUZ
             let fumeCamFarkiDegeri = parseFloat(localStorage.getItem('fumeFark')) || 200;
             let maviYesilCamFarkiDegeri = parseFloat(localStorage.getItem('maviYesilFark')) || 300;
 
-            let sistem = document.getElementById('sistem').value;
-            let cam = document.getElementById('cam').value;
-            let m2 = parseFloat(document.getElementById('metrekare').value);
+            // HTML ELEMANLARINI ALIYORUZ
+            let sistemSelect = document.getElementById('sistem');
+            let profilSelect = document.getElementById('profil');
+            let camSelect = document.getElementById('cam');
+            let m2Input = document.getElementById('metrekare');
+
+            let sistemDegeri = sistemSelect.value;
+            let camDegeri = camSelect.value;
+            let m2 = parseFloat(m2Input.value);
 
             if (isNaN(m2) || m2 <= 0) {
                 alert("Lütfen geçerli bir metrekare (m²) değeri giriniz!");
                 return;
             }
 
-            // Müşterinin seçtiği sisteme göre Taban Fiyatı belirliyoruz
+            // HESAPLAMA
             let m2BirimFiyati = 0;
-            if (sistem === 'katlanir') {
-                m2BirimFiyati = katlanirFiyati;
-            } else if (sistem === 'surme') {
-                m2BirimFiyati = surmeFiyati;
-            } else if (sistem === 'isicamli') {
-                m2BirimFiyati = isicamFiyati;
-            }
+            if (sistemDegeri === 'katlanir') m2BirimFiyati = katlanirFiyati;
+            else if (sistemDegeri === 'surme') m2BirimFiyati = surmeFiyati;
+            else if (sistemDegeri === 'isicamli') m2BirimFiyati = isicamFiyati;
 
-            // Eğer renkli cam seçildiyse üzerine o farkı ekliyoruz
             let camFarki = 0;
-            if (cam === 'fume') {
-                camFarki = fumeCamFarkiDegeri;
-            } else if (cam === 'mavi' || cam === 'yesil') {
-                camFarki = maviYesilCamFarkiDegeri;
-            }
+            if (camDegeri === 'fume') camFarki = fumeCamFarkiDegeri;
+            else if (camDegeri === 'mavi' || camDegeri === 'yesil') camFarki = maviYesilCamFarkiDegeri;
 
-            // MATEMATİKSEL HESAPLAMA (Seçilen Sistemin m2 Fiyatı + Renk Farkı) x Metrekare
             m2BirimFiyati = m2BirimFiyati + camFarki;
             let toplamTutar = m2BirimFiyati * m2;
+            let formatliFiyat = toplamTutar.toLocaleString('tr-TR', { maximumFractionDigits: 0 });
 
-            document.getElementById('fiyat-yazisi').innerText = toplamTutar.toLocaleString('tr-TR', { maximumFractionDigits: 0 });
+            // EKRANA YAZDIR
+            document.getElementById('fiyat-yazisi').innerText = formatliFiyat;
             document.getElementById('sonuc-alani').style.display = 'block';
+
+            // WHATSAPP MESAJINI OTOMATİK OLUŞTUR (Akıllı Kısım)
+            let secilenSistemMetni = sistemSelect.options[sistemSelect.selectedIndex].text;
+            let secilenProfilMetni = profilSelect.options[profilSelect.selectedIndex].text;
+            let secilenCamMetni = camSelect.options[camSelect.selectedIndex].text;
+
+            let wpMesaji = `Merhaba, sitenizden fiyat hesaplaması yaptım. Ücretsiz keşif rica ediyorum.%0A%0A*İstediğim Sistem:* ${secilenSistemMetni}%0A*Profil Rengi:* ${secilenProfilMetni}%0A*Cam Tercihi:* ${secilenCamMetni}%0A*Tahmini Alan:* ${m2} m²%0A*Sitede Çıkan Tutar:* ${formatliFiyat} TL`;
+            
+            // Telefon numarası: 905455569098
+            let wpLink = `https://wa.me/905455569098?text=${wpMesaji}`;
+            document.getElementById('wp-gonder-btn').href = wpLink;
         }
     </script>
 </body>
