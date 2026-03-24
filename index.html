@@ -141,7 +141,7 @@
 
         .section-subtitle { text-align: center; color: #7f8c8d; margin-bottom: 40px; font-size: 1.1rem; }
 
-        /* BİLGİ KARTLARI (SİSTEMLER VE CAMLAR) */
+        /* BİLGİ KARTLARI */
         .card-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
         .info-card { 
             background: var(--beyaz); 
@@ -176,7 +176,7 @@
             cursor: pointer; 
         }
 
-        /* MÜŞTERİ YORUMLARI */
+        /* MÜŞTERİ YORUMLARI - MASAÜSTÜ */
         .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .testimonial-card { background: var(--beyaz); padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; text-align: center; border-bottom: 4px solid var(--turuncu); }
         .testimonial-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
@@ -287,17 +287,18 @@
             .mobile-only-btn { display: block; }
 
             .hero h1 { font-size: 2.2rem; }
-            .section-padding { padding: 50px 5%; }
-            .section-title { font-size: 1.8rem; }
-            .section-subtitle { font-size: 1rem; }
-            .about-text { font-size: 1rem; }
+            .section-padding { padding: 50px 0; /* Mobilde tam genişlik kullanmak için sağ sol padding sıfırlandı */ }
+            .section-title { font-size: 1.8rem; padding: 0 5%; }
+            .section-subtitle { font-size: 1rem; padding: 0 5%; }
+            .about-text { font-size: 1rem; padding: 0 5%; }
             
+            .info-card { width: 90%; margin: 0 auto; } /* Bilgi kartları mobilde ortalansın */
             .info-card img { height: 200px; }
             .info-card h3 { font-size: 1.3rem; }
             .info-card-content { padding: 20px; }
             .vs-list { font-size: 0.95rem; }
 
-            /* DİKKAT: MOBİLDE YORUMLARI KÜÇÜK KARELER HALİNDE KAYDIRILABİLİR YAPMA */
+            /* DİKKAT: MOBİL İÇİN KUSURSUZ YORUM KAYDIRICI (SLIDER) */
             .testimonial-grid { 
                 display: flex; 
                 flex-wrap: nowrap; 
@@ -305,20 +306,26 @@
                 scroll-snap-type: x mandatory; 
                 -webkit-overflow-scrolling: touch; 
                 gap: 15px; 
-                padding-bottom: 20px; 
-                scrollbar-width: none; 
+                padding: 10px 5% 30px 5%; /* Kartların ekrana değmemesi için sağ sol boşluk */
+                scrollbar-width: none; /* Firefox için barı gizle */
             }
             .testimonial-grid::-webkit-scrollbar { 
-                display: none; 
+                display: none; /* Chrome/Safari için barı gizle */
             }
             .testimonial-card { 
-                min-width: 250px; /* Kutucuklar küçültüldü ve kare formuna yaklaştırıldı */
-                padding: 20px; /* İç boşluklar kutuya göre daraltıldı */
-                scroll-snap-align: center; 
-                flex: 0 0 auto;
+                flex: 0 0 80%; /* DİKKAT: Kutuyu ekranın tam %80'ine sabitler, yazılar uzatamaz! */
+                width: 80%;
+                min-height: 220px; /* Kutunun kare şeklinde durmasını sağlar */
+                padding: 20px;
+                scroll-snap-align: center; /* DİKKAT: Parmak bırakıldığında kutu MIKNATIS gibi ekranın TAM ORTASINA kitlenir */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
-            .testimonial-text { font-size: 0.95rem; } /* Küçük kutuda yazıların sığması için font hafif küçültüldü */
+            .testimonial-text { font-size: 0.95rem; } 
 
+            .faq-container { padding: 0 5%; } /* SSS sağ sol boşluk */
             .faq-question { font-size: 1rem; padding: 15px; }
             .faq-answer { font-size: 0.95rem; }
 
