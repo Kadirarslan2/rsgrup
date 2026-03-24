@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Teklif Al | RSGrup Cambalkon</title>
     <style>
-        /* TEMEL AYARLAR */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
         :root { --turuncu: #FF8C00; --koyu-gri: #2c3e50; --beyaz: #ffffff; }
 
-        /* ÜST MENÜ VE LOGO (Ana sayfa ile aynı şık yapı) */
         header { background-color: var(--beyaz); height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        
         .logo-container { position: absolute; top: -65px; padding: 0; transition: transform 0.3s; z-index: 1001; }
         .logo-container:hover { transform: scale(1.05); }
         .logo-container img { height: 250px; width: auto; display: block; object-fit: contain; }
@@ -19,13 +18,11 @@
         .geri-don { color: var(--koyu-gri); text-decoration: none; font-weight: bold; font-size: 1rem; transition: color 0.3s; margin-left: auto; display: flex; align-items: center; gap: 5px; }
         .geri-don:hover { color: var(--turuncu); }
 
-        /* HESAPLAMA EKRANI (Daha modern, yumuşak gölgeli) */
         .teklif-wrapper { padding: 100px 20px 50px; display: flex; justify-content: center; } 
         .teklif-container { width: 100%; max-width: 650px; background: var(--beyaz); padding: 40px; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
         .teklif-container h1 { text-align: center; color: var(--koyu-gri); margin-bottom: 10px; font-size: 2.2rem; }
         .teklif-container p { text-align: center; color: #777; margin-bottom: 30px; font-size: 1.1rem; }
 
-        /* FORM ELEMANLARI */
         .form-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
         .form-group { flex: 1; min-width: 250px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--koyu-gri); font-size: 0.95rem; }
@@ -35,13 +32,11 @@
         .btn-hesapla { width: 100%; padding: 16px; background-color: var(--koyu-gri); color: var(--beyaz); border: none; border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.3s; margin-top: 15px; box-shadow: 0 5px 15px rgba(44, 62, 80, 0.2); }
         .btn-hesapla:hover { background-color: #1a252f; transform: translateY(-2px); }
 
-        /* SONUÇ ALANI (Animasyonlu ve Vurgulu) */
         #sonuc-alani { margin-top: 35px; padding: 30px 20px; background: linear-gradient(135deg, #fff9f2 0%, #fff 100%); border: 2px dashed var(--turuncu); border-radius: 15px; display: none; text-align: center; animation: slideDown 0.5s ease-out; }
         #sonuc-alani h3 { color: #555; font-size: 1.1rem; margin-bottom: 10px; font-weight: 600; }
         #sonuc-alani h2 { color: var(--turuncu); font-size: 2.8rem; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(255,140,0,0.1); }
         .admin-not { font-size: 0.85rem; color: #888; display: block; margin-bottom: 20px; }
 
-        /* SİPARİŞİ WHATSAPP'A GÖNDER BUTONU */
         .btn-whatsapp-gonder { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background-color: #25D366; color: white; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; text-decoration: none; transition: all 0.3s; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); width: 100%; }
         .btn-whatsapp-gonder:hover { background-color: #20bd5a; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); }
         .btn-whatsapp-gonder img { height: 24px; width: auto; filter: brightness(0) invert(1); }
@@ -51,8 +46,8 @@
         /* MOBİL UYUM */
         @media screen and (max-width: 768px) {
             header { height: 70px; padding: 0 5%; position: relative; }
-            .logo-container { position: absolute; top: 0; left: 5%; }
-            .logo-container img { height: 160px; /* Logoyu telefonda büyüttük */ }
+            .logo-container { position: absolute; top: -50px; left: 5%; } /* DİKKAT: Ana sayfadaki gibi tam ortalandı */
+            .logo-container img { height: 170px; } /* DİKKAT: Boyut 170px yapıldı */
             .geri-don { font-size: 0.9rem; }
             
             .teklif-wrapper { padding: 50px 15px; }
@@ -133,14 +128,12 @@
 
     <script>
         function fiyatHesapla() {
-            // ADMIN PANELİNDEN VERİLERİ ÇEKİYORUZ
             let katlanirFiyati = parseFloat(localStorage.getItem('katlanirFiyat')) || 2500;
             let surmeFiyati = parseFloat(localStorage.getItem('surmeFiyat')) || 3000;
             let isicamFiyati = parseFloat(localStorage.getItem('isicamFiyat')) || 3750;
             let fumeCamFarkiDegeri = parseFloat(localStorage.getItem('fumeFark')) || 200;
             let maviYesilCamFarkiDegeri = parseFloat(localStorage.getItem('maviYesilFark')) || 300;
 
-            // HTML ELEMANLARINI ALIYORUZ
             let sistemSelect = document.getElementById('sistem');
             let profilSelect = document.getElementById('profil');
             let camSelect = document.getElementById('cam');
@@ -155,7 +148,6 @@
                 return;
             }
 
-            // HESAPLAMA
             let m2BirimFiyati = 0;
             if (sistemDegeri === 'katlanir') m2BirimFiyati = katlanirFiyati;
             else if (sistemDegeri === 'surme') m2BirimFiyati = surmeFiyati;
@@ -169,18 +161,15 @@
             let toplamTutar = m2BirimFiyati * m2;
             let formatliFiyat = toplamTutar.toLocaleString('tr-TR', { maximumFractionDigits: 0 });
 
-            // EKRANA YAZDIR
             document.getElementById('fiyat-yazisi').innerText = formatliFiyat;
             document.getElementById('sonuc-alani').style.display = 'block';
 
-            // WHATSAPP MESAJINI OTOMATİK OLUŞTUR (Akıllı Kısım)
             let secilenSistemMetni = sistemSelect.options[sistemSelect.selectedIndex].text;
             let secilenProfilMetni = profilSelect.options[profilSelect.selectedIndex].text;
             let secilenCamMetni = camSelect.options[camSelect.selectedIndex].text;
 
             let wpMesaji = `Merhaba, sitenizden fiyat hesaplaması yaptım. Ücretsiz keşif rica ediyorum.%0A%0A*İstediğim Sistem:* ${secilenSistemMetni}%0A*Profil Rengi:* ${secilenProfilMetni}%0A*Cam Tercihi:* ${secilenCamMetni}%0A*Tahmini Alan:* ${m2} m²%0A*Sitede Çıkan Tutar:* ${formatliFiyat} TL`;
             
-            // Telefon numarası: 905455569098
             let wpLink = `https://wa.me/905455569098?text=${wpMesaji}`;
             document.getElementById('wp-gonder-btn').href = wpLink;
         }

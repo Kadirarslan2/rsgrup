@@ -75,6 +75,11 @@
             box-shadow: 0 8px 15px rgba(255, 140, 0, 0.5); 
         }
 
+        /* MOBİL İÇİN ÖZEL BUTON - MASAÜSTÜNDE GİZLİ */
+        .mobile-only-btn {
+            display: none;
+        }
+
         /* MOBİL MENÜ BUTONU (Hamburger) */
         .mobile-menu-icon {
             display: none;
@@ -235,21 +240,21 @@
         /* ======================================================= */
         @media screen and (max-width: 768px) {
             header {
-                justify-content: flex-end; /* Hamburgeri kesin olarak SAĞA yaslar */
-                height: 70px; /* ÜST PANEL İNCECİK SABİT KALDI */
+                justify-content: flex-end; 
+                height: 70px; 
                 padding: 0 5%;
                 position: relative;
             }
 
             .logo-container {
                 position: absolute; 
-                top: 0.2; /* Panelin en üstüne jilet gibi hizalandı */
-                left: 5%; /* Sol köşeye hizalandı */
+                top: -50px; /* DİKKAT: Logo panelin tam merkezine hizalandı */
+                left: 5%; 
                 margin-bottom: 0;
             }
 
             .logo-container img {
-                height: 170px; /* LOGO BOYUTU TAM 170PX YAPILDI */
+                height: 170px; /* DİKKAT: Logo boyutu tam 170px yapıldı */
             }
 
             /* Hamburger Menü İkonu Göster */
@@ -263,7 +268,7 @@
                 width: 100%;
                 display: none; 
                 position: absolute;
-                top: 70px; /* Panel boyuna göre hemen altından açılır */
+                top: 70px; 
                 left: 0;
                 background-color: var(--beyaz);
                 padding: 20px 0;
@@ -296,7 +301,11 @@
             }
 
             .btn-teklif {
-                display: none; /* Üstteki buton gizlensin */
+                display: none; 
+            }
+
+            .mobile-only-btn {
+                display: block;
             }
 
             .hero h1 { font-size: 2.2rem; }
@@ -311,7 +320,6 @@
 
             header { position: relative; }
             
-            /* Mobilde Sabit Teklif Butonunu Biraz Küçült (Ekranda yer kaplamasın) */
             .floating-teklif {
                 padding: 10px 15px;
                 font-size: 0.9rem;
@@ -340,6 +348,9 @@
                 <li><a href="#cam-secenekleri">Cam Seçenekleri</a></li>
                 <li><a href="#referanslar">Referanslar</a></li>
                 <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li class="mobile-only-btn" style="text-align:center; padding: 20px 0;">
+                    <a href="teklif.html" style="background-color: var(--turuncu); color: white; padding: 10px 25px; border-radius: 25px; display: inline-block;">Online Teklif Al</a>
+                </li>
             </ul>
         </nav>
         <a href="teklif.html" class="btn-teklif">Online Teklif Al</a>
