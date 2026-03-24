@@ -83,9 +83,12 @@
             position: relative;
         }
 
-        .mobile-menu-icon img {
-            height: 40px;
-            width: auto;
+        .mobile-menu-icon div {
+            width: 35px;
+            height: 5px;
+            background-color: var(--koyu-gri);
+            margin: 6px 0;
+            transition: 0.4s;
         }
 
         /* HERO BÖLÜMÜ */
@@ -305,8 +308,10 @@
         </a>
         
         <div class="mobile-menu-icon" onclick="toggleMenu()">
-            <img src="https://assets.stickpng.com/images/588a64e7d06f6719692a2d11.png" alt="Menü">
-        </a>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         
         <nav id="mobileNav">
             <ul>
@@ -315,7 +320,6 @@
                 <li><a href="#cam-secenekleri">Cam Seçenekleri</a></li>
                 <li><a href="#referanslar">Referanslar</a></li>
                 <li><a href="#hakkimizda">Hakkımızda</a></li>
-                <li style="display:none; text-align:center; padding: 20px 0;"><a href="teklif.html" class="btn-teklif-mobil">Online Teklif Al</a></li>
             </ul>
         </nav>
         <a href="teklif.html" class="btn-teklif">Online Teklif Al</a>
