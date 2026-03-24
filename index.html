@@ -27,7 +27,7 @@
         /* ÜST MENÜ (Navbar) - MASAÜSTÜ */
         header { 
             background-color: var(--beyaz); 
-            height: 80px; 
+            height: 70px; /* Panel biraz daha daraltıldı */
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -217,20 +217,21 @@
         /* ======================================================= */
         @media screen and (max-width: 768px) {
             header {
-                justify-content: space-between;
-                height: auto;
-                padding: 15px 5%;
+                justify-content: flex-end; /* Hamburgeri sağa yasla */
+                height: 60px; /* ÜST PANEL İNCECİK OLDU */
+                padding: 0 5%;
                 position: relative;
             }
 
             .logo-container {
-                position: relative; 
-                top: 0;
+                position: absolute; 
+                left: 5%;
+                top: 0; /* Üstten başlar, paneli genişletmez aşağı taşar */
                 margin-bottom: 0;
             }
 
             .logo-container img {
-                height: 120px; /* DİKKAT: Telefondaki logo boyutu tam 2 katına çıkarıldı! */
+                height: 160px; /* LOGO KOCAMAN OLDU */
             }
 
             /* Hamburger Menü İkonu Göster */
@@ -244,7 +245,7 @@
                 width: 100%;
                 display: none; 
                 position: absolute;
-                top: 100%; /* Logonun boyutuna göre hemen altından açılsın */
+                top: 60px; /* Panel 60px olduğu için menü hemen panelin altından açılsın */
                 left: 0;
                 background-color: var(--beyaz);
                 padding: 20px 0;
@@ -434,13 +435,13 @@
         <a href="https://instagram.com/rs.grupcambalkon" target="_blank" class="contact-bubble instagram-bubble">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
         </a>
-        <a href="https://wa.me/904545569098?text=Merhaba, sitenizden%20ulaşıyorum.%20Cambalkon%20hakkında%20keşif%20rica%20edecektim." target="_blank" class="contact-bubble whatsapp-bubble">
+        <a href="https://wa.me/905455569098?text=Merhaba, sitenizden%20ulaşıyorum.%20Cambalkon%20hakkında%20keşif%20rica%20edecektim." target="_blank" class="contact-bubble whatsapp-bubble">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
         </a>
     </div>
 
     <footer>
-        <p>Bize Ulaşın: info@rsgrupcambalkon.com | Telefon: 0555 555 55 55</p>
+        <p>Bize Ulaşın: info@rsgrupcambalkon.com | Telefon: 0545 556 90 98</p>
         <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">&copy; 2026 RSGrup Cambalkon. Tüm Hakları Saklıdır.</p>
     </footer>
 
