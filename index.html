@@ -176,7 +176,7 @@
             cursor: pointer; 
         }
 
-        /* YENİ EKLENEN BÖLÜM: MÜŞTERİ YORUMLARI */
+        /* MÜŞTERİ YORUMLARI */
         .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .testimonial-card { background: var(--beyaz); padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; text-align: center; border-bottom: 4px solid var(--turuncu); }
         .testimonial-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
@@ -184,7 +184,7 @@
         .testimonial-text { font-style: italic; color: #555; }
         .client-name { font-weight: bold; color: var(--koyu-gri); margin-top: 15px; }
 
-        /* YENİ EKLENEN BÖLÜM: SIKÇA SORULAN SORULAR (SSS) */
+        /* SIKÇA SORULAN SORULAR (SSS) */
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { background: var(--beyaz); border-radius: 8px; margin-bottom: 15px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); overflow: hidden; }
         .faq-question { padding: 20px; font-weight: bold; color: var(--koyu-gri); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; font-size: 1.1rem; }
@@ -275,56 +275,16 @@
                 height: 170px; 
             }
 
-            /* Hamburger Menü İkonu Göster */
-            .mobile-menu-icon {
-                display: block;
-            }
+            .mobile-menu-icon { display: block; }
 
-            /* Masaüstü Menüsünü Gizle ve Mobil Menüye Çevir */
-            nav {
-                margin-left: 0; 
-                width: 100%;
-                display: none; 
-                position: absolute;
-                top: 70px; 
-                left: 0;
-                background-color: var(--beyaz);
-                padding: 20px 0;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-                z-index: 999;
-            }
+            nav { margin-left: 0; width: 100%; display: none; position: absolute; top: 70px; left: 0; background-color: var(--beyaz); padding: 20px 0; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 999; }
+            nav.open { display: block; }
+            nav ul { flex-direction: column; align-items: center; gap: 20px; }
+            nav a { font-size: 1.1rem; display: block; width: 100%; text-align: center; padding: 10px; border-bottom: 1px solid #eee; }
+            nav li:last-child a { border-bottom: none; }
 
-            /* Mobil Menü Açık Sınıfı */
-            nav.open {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column; 
-                align-items: center; 
-                gap: 20px;
-            }
-
-            nav a {
-                font-size: 1.1rem; 
-                display: block;
-                width: 100%;
-                text-align: center;
-                padding: 10px;
-                border-bottom: 1px solid #eee; 
-            }
-
-            nav li:last-child a {
-                border-bottom: none;
-            }
-
-            .btn-teklif {
-                display: none; 
-            }
-
-            .mobile-only-btn {
-                display: block;
-            }
+            .btn-teklif { display: none; }
+            .mobile-only-btn { display: block; }
 
             .hero h1 { font-size: 2.2rem; }
             .section-padding { padding: 50px 5%; }
@@ -337,36 +297,34 @@
             .info-card-content { padding: 20px; }
             .vs-list { font-size: 0.95rem; }
 
-            /* MOBİLDE YORUMLARI SAĞA SOLA KAYDIRILABİLİR (SLIDER) YAPMA */
+            /* DİKKAT: MOBİLDE YORUMLARI KÜÇÜK KARELER HALİNDE KAYDIRILABİLİR YAPMA */
             .testimonial-grid { 
                 display: flex; 
                 flex-wrap: nowrap; 
                 overflow-x: auto; 
                 scroll-snap-type: x mandatory; 
                 -webkit-overflow-scrolling: touch; 
-                gap: 20px; 
-                padding-bottom: 20px; /* Alttaki gölgeler kesilmesin diye */
-                scrollbar-width: none; /* Firefox için kaydırma çubuğunu gizler */
+                gap: 15px; 
+                padding-bottom: 20px; 
+                scrollbar-width: none; 
             }
             .testimonial-grid::-webkit-scrollbar { 
-                display: none; /* Chrome/Safari/Mobil için kaydırma çubuğunu gizler */
+                display: none; 
             }
             .testimonial-card { 
-                min-width: 85%; /* Ekranda bir kart tam, diğer kart ise ucundan gözüksün ki kaydırılabilir olduğu anlaşılsın */
+                min-width: 250px; /* Kutucuklar küçültüldü ve kare formuna yaklaştırıldı */
+                padding: 20px; /* İç boşluklar kutuya göre daraltıldı */
                 scroll-snap-align: center; 
                 flex: 0 0 auto;
             }
+            .testimonial-text { font-size: 0.95rem; } /* Küçük kutuda yazıların sığması için font hafif küçültüldü */
 
             .faq-question { font-size: 1rem; padding: 15px; }
             .faq-answer { font-size: 0.95rem; }
 
             header { position: relative; }
             
-            .floating-teklif {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-                bottom: 25px;
-            }
+            .floating-teklif { padding: 10px 15px; font-size: 0.9rem; bottom: 25px; }
         }
     </style>
 </head>
@@ -502,20 +460,38 @@
         <div class="testimonial-grid">
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Kış bahçesi için ısıcamlı cambalkon yaptırdık. İşçilik harikaydı, söz verdikleri günde gelip tertemiz taktılar. Kesinlikle tavsiye ederim."</p>
+                <p class="testimonial-text">"Kış bahçesi için ısıcamlı cambalkon yaptırdık. İşçilik harikaydı, söz verdikleri günde gelip tertemiz taktılar."</p>
                 <div class="client-name">- Ahmet Y. (Çankaya)</div>
             </div>
             
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Siteden fiyat hesaplayıp WhatsApp'tan yazdım, anında dönüş yaptılar. Balkonum artık evin en güzel, en sıcak odası oldu."</p>
+                <p class="testimonial-text">"Siteden fiyat hesaplayıp WhatsApp'tan yazdım, anında dönüş yaptılar. Balkonum artık evin en güzel odası oldu."</p>
                 <div class="client-name">- Merve K. (Yenimahalle)</div>
             </div>
             
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Sürme cam sistemi için anlaştık. Profiller çok kaliteli, camlar yağ gibi kayıyor. Ustalara ve ekibe ellerine sağlık diyorum."</p>
+                <p class="testimonial-text">"Sürme cam sistemi için anlaştık. Profiller çok kaliteli, camlar yağ gibi kayıyor. Ustalara ellerine sağlık diyorum."</p>
                 <div class="client-name">- Mustafa T. (Keçiören)</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Temiz işçilik ve güler yüzlü ekip. Balkonumu artık depo değil, kahve köşesi olarak kullanıyorum. Teşekkürler RSGrup!"</p>
+                <div class="client-name">- Ayşe N. (Etimesgut)</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Alüminyum profillerin kalitesi gerçekten fark ediyor. Rüzgar sesi tamamen kesildi. Söz verdikleri tarihte bitirdiler."</p>
+                <div class="client-name">- Kemal B. (Sincan)</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Göl manzaralı balkonumuz için antrasit renk katlanır sistem yaptırdık. Estetik duruşu harika. Kesinlikle öneririm."</p>
+                <div class="client-name">- Elif D. (Gölbaşı)</div>
             </div>
         </div>
     </section>
