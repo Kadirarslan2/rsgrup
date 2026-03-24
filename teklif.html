@@ -43,11 +43,26 @@
 
         @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* MOBİL UYUM */
+        /* MOBİL UYUMLULUK (TELEFON EKRANLARI İÇİN ÖZEL AYARLAR) */
         @media screen and (max-width: 768px) {
-            header { height: 70px; padding: 0 5%; position: relative; }
-            .logo-container { position: absolute; top: -50px; left: 5%; } /* DİKKAT: Ana sayfadaki gibi tam ortalandı */
-            .logo-container img { height: 170px; } /* DİKKAT: Boyut 170px yapıldı */
+            header {
+                justify-content: flex-end; 
+                height: 70px; 
+                padding: 0 5%;
+                position: relative;
+            }
+
+            .logo-container {
+                position: absolute; 
+                top: -35px; /* DİKKAT: Ana sayfadaki gibi tam ferahlatıldı */
+                left: 5%; 
+                margin-bottom: 0;
+            }
+
+            .logo-container img {
+                height: 170px; 
+            }
+
             .geri-don { font-size: 0.9rem; }
             
             .teklif-wrapper { padding: 50px 15px; }
@@ -128,12 +143,14 @@
 
     <script>
         function fiyatHesapla() {
+            // ADMIN PANELİNDEN VERİLERİ ÇEKİYORUZ
             let katlanirFiyati = parseFloat(localStorage.getItem('katlanirFiyat')) || 2500;
             let surmeFiyati = parseFloat(localStorage.getItem('surmeFiyat')) || 3000;
             let isicamFiyati = parseFloat(localStorage.getItem('isicamFiyat')) || 3750;
             let fumeCamFarkiDegeri = parseFloat(localStorage.getItem('fumeFark')) || 200;
             let maviYesilCamFarkiDegeri = parseFloat(localStorage.getItem('maviYesilFark')) || 300;
 
+            // HTML ELEMANLARINI ALIYORUZ
             let sistemSelect = document.getElementById('sistem');
             let profilSelect = document.getElementById('profil');
             let camSelect = document.getElementById('cam');
@@ -148,6 +165,7 @@
                 return;
             }
 
+            // HESAPLAMA
             let m2BirimFiyati = 0;
             if (sistemDegeri === 'katlanir') m2BirimFiyati = katlanirFiyati;
             else if (sistemDegeri === 'surme') m2BirimFiyati = surmeFiyati;
@@ -161,15 +179,18 @@
             let toplamTutar = m2BirimFiyati * m2;
             let formatliFiyat = toplamTutar.toLocaleString('tr-TR', { maximumFractionDigits: 0 });
 
+            // EKRANA YAZDIR
             document.getElementById('fiyat-yazisi').innerText = formatliFiyat;
             document.getElementById('sonuc-alani').style.display = 'block';
 
+            // WHATSAPP MESAJINI OTOMATİK OLUŞTUR
             let secilenSistemMetni = sistemSelect.options[sistemSelect.selectedIndex].text;
             let secilenProfilMetni = profilSelect.options[profilSelect.selectedIndex].text;
             let secilenCamMetni = camSelect.options[camSelect.selectedIndex].text;
 
             let wpMesaji = `Merhaba, sitenizden fiyat hesaplaması yaptım. Ücretsiz keşif rica ediyorum.%0A%0A*İstediğim Sistem:* ${secilenSistemMetni}%0A*Profil Rengi:* ${secilenProfilMetni}%0A*Cam Tercihi:* ${secilenCamMetni}%0A*Tahmini Alan:* ${m2} m²%0A*Sitede Çıkan Tutar:* ${formatliFiyat} TL`;
             
+            // Telefon numarası: 905455569098
             let wpLink = `https://wa.me/905455569098?text=${wpMesaji}`;
             document.getElementById('wp-gonder-btn').href = wpLink;
         }
