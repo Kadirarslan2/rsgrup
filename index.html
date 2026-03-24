@@ -55,7 +55,7 @@
         }
         
         nav { margin-left: 200px; } 
-        nav ul { list-style: none; display: flex; gap: 15px; } /* Menüye eleman eklenince sığsın diye boşluklar biraz daraltıldı */
+        nav ul { list-style: none; display: flex; gap: 15px; } 
         nav a { color: var(--koyu-gri); font-weight: 600; font-size: 0.95rem; transition: color 0.3s, transform 0.3s; display: inline-block; }
         nav a:hover { color: var(--turuncu); transform: translateY(-2px); }
         
@@ -266,7 +266,7 @@
 
             .logo-container {
                 position: absolute; 
-                top: -35px; /* Logo 15px ferahlatılmış hali korundu */
+                top: -35px; 
                 left: 5%; 
                 margin-bottom: 0;
             }
@@ -336,6 +336,26 @@
             .info-card h3 { font-size: 1.3rem; }
             .info-card-content { padding: 20px; }
             .vs-list { font-size: 0.95rem; }
+
+            /* MOBİLDE YORUMLARI SAĞA SOLA KAYDIRILABİLİR (SLIDER) YAPMA */
+            .testimonial-grid { 
+                display: flex; 
+                flex-wrap: nowrap; 
+                overflow-x: auto; 
+                scroll-snap-type: x mandatory; 
+                -webkit-overflow-scrolling: touch; 
+                gap: 20px; 
+                padding-bottom: 20px; /* Alttaki gölgeler kesilmesin diye */
+                scrollbar-width: none; /* Firefox için kaydırma çubuğunu gizler */
+            }
+            .testimonial-grid::-webkit-scrollbar { 
+                display: none; /* Chrome/Safari/Mobil için kaydırma çubuğunu gizler */
+            }
+            .testimonial-card { 
+                min-width: 85%; /* Ekranda bir kart tam, diğer kart ise ucundan gözüksün ki kaydırılabilir olduğu anlaşılsın */
+                scroll-snap-align: center; 
+                flex: 0 0 auto;
+            }
 
             .faq-question { font-size: 1rem; padding: 15px; }
             .faq-answer { font-size: 0.95rem; }
@@ -564,16 +584,13 @@
         function toggleFaq(element) {
             var parent = element.parentElement;
             
-            // Eğer açılan şeye tekrar tıklanırsa kapat
             if (parent.classList.contains("active")) {
                 parent.classList.remove("active");
             } else {
-                // Önce açık olan diğer tüm soruları kapat (daha şık bir görünüm için)
                 var allFaqs = document.querySelectorAll(".faq-item");
                 allFaqs.forEach(function(faq) {
                     faq.classList.remove("active");
                 });
-                // Sadece tıklanılanı aç
                 parent.classList.add("active");
             }
         }
